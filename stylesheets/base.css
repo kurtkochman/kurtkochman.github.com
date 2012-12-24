@@ -86,11 +86,12 @@
 }
 
 	.post-timestamp {
-		margin-bottom: 15px;
+		margin: 15px 0 20px 0;
 }
 
 	.post-timestamp time {
 		border-bottom: 1px solid #ddd;
+		padding-bottom: 5px;
 }
 
 	.divider {
