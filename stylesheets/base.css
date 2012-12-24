@@ -62,17 +62,18 @@
  /* #Site Styles
 ================================================== */
  
-	.logo {
+	#logo {
 		margin-top: 25px;
 }
 	
 	
-	.logo a {
+	#logo a {
 		font-family: Georgia, "Times New Roman", serif;
 		font-size: 46px; 
 		line-height: 50px; 
 		margin-bottom: 14px;
 		text-decoration: none;
+		color: #21759B;
 }
 
 	.feature {
