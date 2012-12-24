@@ -8,7 +8,7 @@
   <!-- Basic Page Needs
   	================================================== -->
 	<meta charset="utf-8">
-	<title>Kurt Kochman - Home</title>
+	<title>Kurt Kochman - Using Postmark to Bypass PHP Mail</title>
 	<meta name='description' content='Kurt Kochman's Blog' />
 		
 	<!-- Mobile Specific Metas
@@ -107,8 +107,125 @@
 			Postmark provides an API that allows me to bypass PHP Mail and send my 
 			authenticated transactional email though them for a small fee 
 			(just $1.50 for 100 emails and the first 1000 emails are free).</p>
+
+			<p>I checked out Postmark and was eager to give it a try. The path of least 
+			resistance was still PHP, so I opted to experiment with the 
+			<a href="http://github.com/Znarkus/postmark-php">Postmark PHP Class</a> 
+			by <a href="http://www.mimmin.com">Markus Hedlund</a>. After adding a 
+			CNAME to my DNS and verifying my domain, I started messing around with the 
+			script and before long I was able to send a successful test message.</p>
+
+			<p>The next step was a bit more difficult, at least for me as it involved 
+			passed my form data to the script and parsing the data into the body of the 
+			email before sending it out. Despite a good bit of searching, I couldn't find 
+			a single tutorial on integrating the jQuery Form Plugin with the Postmark 
+			PHP Class, so I was forced to figure it out on my own. Since I'm not a programmer 
+			(full disclaimer), I resorted to my old stand by...trail and error. Luckily, 
+			this was one of the few times where trail and error actually worked!</p>
+
+			<p>Here's where I attempt to step you through what I did. Let's start with process.php from Landon Miller's tutorial:</p>
 			
-			<a href="/using-postmark-to-bypass-php-mail">Continue reading...</a>
+			<p><pre class="language-php">
+			// Get Data	
+			$name = strip_tags($_POST['name']);
+			$email = strip_tags($_POST['email']);
+			$message = strip_tags($_POST['message']);
+
+			// Send Message
+			mail( "jane@smith.com", "Jane Smith",
+			"Name: $name\nEmail: $email\nMessage: $message\n",
+			"From: Jane Smith <jane@smith.com>" );
+			</pre></p>
+
+			<p>Then let's look at the Postmark PHP script:</p>
+			
+			<p><pre class="language-php">
+	
+			// Well, yeah..
+			require('Postmark.php');
+	
+			// Create a "server" in your "rack", then copy it's API key
+			define('POSTMARKAPP_API_KEY', 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
+	
+			// Create a "Sender signature", then use the "From Email" here.
+			// POSTMARKAPP_MAIL_FROM_NAME is optional, and can be overridden
+			// with Mail_Postmark::fromName()
+			define('POSTMARKAPP_MAIL_FROM_ADDRESS', 'user@example.com');
+			define('POSTMARKAPP_MAIL_FROM_NAME', 'Example');
+	
+			// Create a message and send it
+			Mail_Postmark::compose()
+				->addTo('jane@smith.com', 'Jane Smith')
+				->subject('Subject')
+				->messagePlain('Plaintext message')
+				->send();
+			</pre></p>
+
+			<p>Take the data-parsing bit from process.php:</p>
+			
+			
+			<p><pre class="language-php">
+			// Get Data	
+			$name = strip_tags($_POST['name']);
+			$email = strip_tags($_POST['email']);
+			$message = strip_tags($_POST['message']);
+			</pre></p>
+			
+			<p>And insert it into the Postmark PHP script:</p>
+			
+			<p><pre class="language-php">
+			// Well, yeah..
+			require('Postmark.php');
+	
+			// Create a "server" in your "rack", then copy it's API key
+			define('POSTMARKAPP_API_KEY', 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
+	
+			// Create a "Sender signature", then use the "From Email" here.
+			// POSTMARKAPP_MAIL_FROM_NAME is optional, and can be overridden
+			// with Mail_Postmark::fromName()
+			define('POSTMARKAPP_MAIL_FROM_ADDRESS', 'user@example.com');
+			define('POSTMARKAPP_MAIL_FROM_NAME', 'Example');
+			
+			// Get Data	
+			$name = strip_tags($_POST['name']);
+			$email = strip_tags($_POST['email']);
+			$message = strip_tags($_POST['message']);
+	
+			// Create a message and send it
+			Mail_Postmark::compose()
+				->addTo('jane@smith.com', 'Jane Smith')
+				->subject('Subject')
+				->messagePlain('Plaintext message')
+				->send();
+			</pre></p>
+
+			<p>Finally, you need to get the data into the body of your email using dot separators:</p>
+			
+			<p><pre class="language-php">
+			// Create a message and send it
+			Mail_Postmark::compose()
+				->addTo('jane@smith.com', 'Jane Smith')
+				->subject('Subject')
+				->messagePlain('From: ' . $name . "\r\n" . 'Email: ' .  $email . "\r\n" . 'Message: ' . $message)
+				->send();
+			</pre></p>
+
+			<p>Voilà! You now have a working form that can be hosted anywhere you like (provided your web host supports PHP).</p>
+			
+			<div id="disqus_thread"></div>
+    		<script type="text/javascript">
+        	/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        	var disqus_shortname = 'kurtkochman'; // required: replace example with your forum shortname
+
+        	/* * * DON'T EDIT BELOW THIS LINE * * */
+        	(function() {
+            	var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            	dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            	(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        	})();
+    		</script>
+    		<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    		<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
     	
 		</div>
 		
