@@ -161,7 +161,7 @@
 				->send();
 			</pre></p>
 
-			<p>Take the data-parsing variables from process.php:</p>
+			<p>Take the data-parsing variables from process.php.</p>
 			
 			
 			<p><pre class="language-php">
@@ -171,7 +171,7 @@
 			$message = strip_tags($_POST['message']);
 			</pre></p>
 			
-			<p>And insert them into the Postmark PHP script:</p>
+			<p>And insert them into the Postmark PHP script.</p>
 			
 			<p><pre class="language-php">
 			// Well, yeah..
@@ -199,7 +199,7 @@
 				->send();
 			</pre></p>
 
-			<p>Finally, you need to get the data into the body of your email using dot separators:</p>
+			<p>Finally, you need to inject the data into the body of your email:</p>
 			
 			<p><pre class="language-php">
 			// Create a message and send it
