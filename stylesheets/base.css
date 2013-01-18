@@ -92,6 +92,10 @@
 		border-bottom: 1px solid #ccc;
 }
 
+	#author p {
+		font: 16px/23px Cambria, Georgia, "Times New Roman", serif;
+}
+
 	.post-timestamp {
 		margin: 15px 0 20px 0;
 }
