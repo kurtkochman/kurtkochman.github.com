@@ -86,6 +86,12 @@
 		height: auto;
 }
 
+	#author {
+		border-top: 1px solid #ccc;
+		padding: 15px 0;
+		border-bottom: 1px solid #ccc;
+}
+
 	.post-timestamp {
 		margin: 15px 0 20px 0;
 }
