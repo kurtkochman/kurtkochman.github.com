@@ -51,7 +51,7 @@
 /* #Basic Styles
 ================================================== */
 	body {
-		background: #eee;
+		background: #f8f8f8;
 		font: 18px/25px Cambria, Georgia, "Times New Roman", serif;
 		color: #333;
 		-webkit-font-smoothing: antialiased; /* Fix for webkit rendering */
