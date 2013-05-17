@@ -97,13 +97,12 @@
 			<a href="http://eightonefive.com/blog/2011/10/20/create-a-simple-html5-contact-form/">
 			Create A Simple HTML5 Contact Form</a> by Landon Miller.</p>
 
-			<p>I had been reading up on Amazon's <a href="http://aws.amazon.com/ec2/">EC2</a> service with the free usage tier and decided to give it a try. 
-			I had a site I wanted to migrate from Weebly to static HTML, which included registration and contact forms. 
-			One of the biggest limitations I encountered while building out my HTML5 forms 
-			was getting my form data into the correct format and sending out an 
-			authenticated email. I had no interest in setting up an STMP mail server, and at the time, Amazon's <a href="http://aws.amazon.com/ses/">Simple Email Service</a> 
-			did not exist.</p>
-
+			<p>I had been reading up on Amazon's <a href="http://aws.amazon.com/ec2/">EC2</a> service with the free 
+			usage tier and decided to give it a try. I had a site I wanted to migrate from Weebly to static HTML, 
+			which included registration and contact forms. I could build the forms with HTML5, and use PHP mail() 
+			to process the form data and send it to the desired email address. However, I still needed a way to 
+			authenticate the outgoing email so it wouldn't be flagged as spam. I had no interest in setting up an 
+			STMP mail server, and at the time, Amazon's <a href="http://aws.amazon.com/ses/">Simple Email Service</a> did not exist.</p>
 
 			<p>Fortunately for me, Miller had posted a comment on his tutorial 
 			recommending <a href="http://www.postmarkapp.com">Postmark</a> as an alternative. 
@@ -112,7 +111,7 @@
 			(just $1.50 for 1000 emails and the first 1000 emails are free).</p>
 
 			<p>I checked out Postmark and was eager to give it a try. The path of least 
-			resistance was still PHP, so I opted to experiment with the 
+			resistance was PHP, so I opted to experiment with the 
 			<a href="http://github.com/Znarkus/postmark-php">Postmark PHP Class</a> 
 			by Markus Hedlund. After adding a CNAME to my DNS and verifying my domain, 
 			I started messing around with the script and before long I was able to send a 
