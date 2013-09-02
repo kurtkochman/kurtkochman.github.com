@@ -19,7 +19,7 @@
 ================================================== */
 	body {
 		background: #f8f8f8;
-		font: 18px/25px Cambria, Georgia, "Times New Roman", serif;
+		font: 18px/35px Cambria, Georgia, "Times New Roman", serif;
 		color: #333;
 		-webkit-font-smoothing: antialiased; /* Fix for webkit rendering */
 		-webkit-text-size-adjust: 100%;
@@ -59,14 +59,14 @@
 ================================================== */
 
 	#logo {
-		margin-top: 25px;
+		margin-top: 28px;
 }
 
 
 	#logo a {
 		font-family: Georgia, "Times New Roman", serif;
-		font-size: 46px; 
-		line-height: 50px; 
+		font-size: 42px; 
+		line-height: 48px; 
 		margin-bottom: 14px;
 		text-decoration: none;
 		color: #21759B;
@@ -77,14 +77,14 @@
 }
 
 	.feature img {
-		margin-bottom: 15px;
+		margin-bottom: 14px;
 		max-width: 100%;
 		height: auto;
 }
 
 
 	.post-timestamp {
-		margin: 15px 0 20px 0;
+		margin: 14px 0 20px 0;
 }
 
 	.post-timestamp time {
