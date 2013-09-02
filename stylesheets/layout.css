@@ -26,6 +26,35 @@
  }
 
 
+/* #Typography (baseline corrections)
+================================================== */
+
+	h1 { line-height: 49px; margin-bottom: 14px;}
+	h2 { line-height: 42px; margin-bottom: 7px; }
+	h3 { line-height: 35px; margin-bottom: 7px; }
+	h4 { line-height: 28px; margin-bottom: 7px; }
+	h5 { line-height: 21px; }
+
+	p { margin: 0 0 21px 0; }
+	p.lead { line-height: 28px; }
+
+
+/*	Blockquotes  */
+	blockquote, blockquote p { line-height: 21px;}
+	blockquote { margin: 0 0 21px; padding: 7px 20px 0 19px; }
+
+	hr { margin: 14px 0 28px;}
+	
+/* #Lists (baseline corrections)
+================================================== */
+	ul, ol { margin-bottom: 21px; }
+	ul ul, ul ol,
+	ol ol, ol ul { margin: 7px 0 7px 30px; }
+	ul ul li, ul ol li,
+	ol ol li, ol ul li { margin-bottom: 7px; }
+	li { line-height: 21px; margin-bottom: 14px; }
+
+
 /* #Site Styles
 ================================================== */
 
