@@ -82,6 +82,9 @@
 		height: auto;
 }
 
+	.sidebar img {
+		border-radius: 100px;
+	}
 
 	.post-timestamp {
 		margin: 14px 0 20px 0;
